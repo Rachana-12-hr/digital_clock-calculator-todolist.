@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>calci</title>
+        <style>
+            .cal{
+                text-align: center;
+            }
+            body{
+                background-color: ghostwhite;
+                padding: 0%;
+                margin: 0%;
+                font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            }
+            .center{
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /*margin-top: 150px;*/
+                background-color:white ;
+                /*margin-left: 400px;
+                margin-right: 400px;*/
+                padding:150px 150px 150px 150px;
+                margin: 300px 300px 300px 300px;
+                border-radius: 20px;
+                
+                height:50px;
+                width:50px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+
+
+                
+            }
+            input[type=text]{
+                border-radius: 3px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                height: 50px;
+            width: 250px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: blanchedalmond;
+            transition: background-color 0.3s;
+
+            }
+            input[type="button"] {
+            height: 50px;
+            width: 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color:aquamarine;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        </style>
+    </head>
+    <body>
+        <h1 >CALCULATOR</h1>
+        <div class="center">
+             
+            <table border:0>
+                <tr>
+                    <td colspan="3"><input type="text" id="reslt"></td>
+                    <td ><input type="button" value="clear"        onclick="clr()"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="1" onclick="display('1')"></td>
+                    <td><input type="button" value="2" onclick="display('2')"></td>
+                    <td><input type="button" value="3" onclick="display('3')"></td>
+                    <td><input type="button" value="/" onclick="display('/')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="4" onclick="display('4')"></td>
+                    <td><input type="button" value="5" onclick="display('5')"></td>
+                    <td><input type="button" value="6" onclick="display('6')"></td>
+                    <td><input type="button" value="+" onclick="display('+')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="7" onclick="display('7')"></td>
+                    <td><input type="button" value="8" onclick="display('8')"></td>
+                    <td><input type="button" value="9" onclick="display('9')"></td>
+                    <td><input type="button" value="-" onclick="display('-')"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="." onclick="display('.')"></td>
+                    <td><input type="button" value="=" onclick="equate()"></td>
+                    <td><input type="button" value="*" onclick="display('*')"></td>
+                    <td><input type="button" value="%" onclick="display('%')"></td>
+                </tr>
+                
+            </table>
+        </div>
+        
+        <script type="text/javascript">
+            function clr()
+            {
+                document.getElementById("reslt").value="";
+            }
+
+            function display(val)
+            {
+                document.getElementById("reslt").value+=val;
+            }
+            function equate(){
+            let x=document.getElementById("reslt").value;
+            let y=eval(x);
+            document.getElementById("reslt").value=y;
+
+            }
+        </script>
+    </body>
+</html>

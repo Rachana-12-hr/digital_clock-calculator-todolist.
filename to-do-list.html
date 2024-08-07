@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-Do List</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* Ensures body takes full viewport height */
+                margin: 0; /* Resets default margin for body */
+                background-color: black;
+            }
+            .center {
+                background-color: cyan;
+                display: flex;
+                flex-direction: column; /* Aligns items vertically */
+                align-items: center; /* Centers items horizontally */
+                border-radius: 10px;
+                padding: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Fixed rgba syntax */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <form>
+                <input type="text" placeholder="to-do-items" id="input-grps">
+                <br>
+                <h6>Button to add the task</h6>
+                <input type="button" value="Add" onclick="add_item()">
+                <ul id="item"></ul>
+            </form>
+        </div>
+        <script type="text/javascript">
+            function add_item() {
+                let items = document.getElementById("input-grps");
+                let list_item = document.getElementById("item");
+                if (items.value != "") {
+                    let make_li = document.createElement("li");
+                    make_li.appendChild(document.createTextNode(items.value));
+                    list_item.appendChild(make_li);
+                    items.value = "";
+                } else {
+                    alert("Please add a value to the item");
+                }
+            }
+        </script>
+    </body>
+</html>

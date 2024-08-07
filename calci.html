@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .display {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            padding-right: 10px;
+            font-size: 18px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .button-grid input[type="button"] {
+            height: 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            transition: background-color 0.3s;
+        }
+
+        .button-grid input[type="button"]:hover {
+            background-color: #ccc;
+        }
+
+        .button-grid input[type="button"].operator {
+            background-color: #ff8a65;
+            color: #fff;
+        }
+
+        .button-grid input[type="button"].operator:hover {
+            background-color: #ff7043;
+        }
+
+        .button-grid input[type="button"].equals {
+            background-color: #4caf50;
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        .button-grid input[type="button"].equals:hover {
+            background-color: #43a047;
+        }
+
+        .button-grid input[type="button"].clear {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .button-grid input[type="button"].clear:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator" aria-label="Basic Calculator">
+        <input type="text" id="result" class="display" aria-label="Calculator Display" readonly>
+        <div class="button-grid">
+            <input type="button" value="1" onclick="display('1')">
+            <input type="button" value="2" onclick="display('2')">
+            <input type="button" value="3" onclick="display('3')">
+            <input type="button" value="/" class="operator" onclick="display('/')">
+            <input type="button" value="4" onclick="display('4')">
+            <input type="button" value="5" onclick="display('5')">
+            <input type="button" value="6" onclick="display('6')">
+            <input type="button" value="*" class="operator" onclick="display('*')">
+            <input type="button" value="7" onclick="display('7')">
+            <input type="button" value="8" onclick="display('8')">
+            <input type="button" value="9" onclick="display('9')">
+            <input type="button" value="-" class="operator" onclick="display('-')">
+            <input type="button" value="." onclick="display('.')">
+            <input type="button" value="0" onclick="display('0')">
+            <input type="button" value="=" class="equals" onclick="equate()">
+            <input type="button" value="+" class="operator" onclick="display('+')">
+            <input type="button" value="C" class="clear" onclick="clr()">
+            <input type="button" value="%" class="operator" onclick="display('%')">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function clr() {
+            document.getElementById("result").value = "";
+        }
+
+        function display(val) {
+            document.getElementById("result").value += val;
+        }
+
+        function equate() {
+            try {
+                let expression = document.getElementById("result").value;
+                let result = Function('"use strict";return (' + expression + ')')();
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
